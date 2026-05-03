@@ -1,0 +1,236 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Core palette - Neobrutalism */
+  --color-background: #FAFAFA;
+  --color-foreground: #000000;
+  --color-muted: #888888;
+  --color-gray-100: #F0F0F0;
+  --color-gray-200: #E0E0E0;
+
+  /* Accent */
+  --color-accent: #FFE500;
+  --color-accent2: #FF4D4D;
+  --color-accent3: #B8FF57;
+  --color-dark: #111111;
+  --color-white: #FAFAFA;
+  --color-black: #000000;
+
+  /* Shadows */
+  --shadow-sm: 3px 3px 0px #000;
+  --shadow-md: 5px 5px 0px #000;
+  --shadow-lg: 8px 8px 0px #000;
+  --shadow-acc: 6px 6px 0px var(--color-accent);
+
+  /* Borders */
+  --border-sm: 2px solid #000;
+  --border-md: 3px solid #000;
+  --border-lg: 4px solid #000;
+  --border-dash: 1px dashed #000;
+  --border-acc: 2px solid var(--color-accent);
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* Radius */
+  --radius-xs: 4px;
+  --radius-md: 9999px;
+
+  /* Font families */
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-heading: 'Syne', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+/* Base reset */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  overflow-x: clip;
+}
+
+main {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+}
+
+/* Section rhythm */
+.section {
+  padding-block: clamp(2.75rem, 7vw, 4.5rem);
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: clamp(3.5rem, 8vw, 5.5rem);
+  }
+}
+
+.section-label {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+@media (min-width: 640px) {
+  .section-label {
+    font-size: 11px;
+  }
+}
+
+/* Selection */
+::selection {
+  background: var(--color-accent);
+  color: var(--color-black);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-gray-100);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-black);
+  border-radius: 0;
+}
+
+/* Focus visible - Accessibility */
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* Utility classes */
+.bg-section-light {
+  background-color: var(--color-background);
+}
+.bg-section-dark {
+  background-color: var(--color-black);
+}
+.bg-section-muted {
+  background-color: var(--color-gray-100);
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--space-10);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-left: max(var(--space-5), env(safe-area-inset-left));
+    padding-right: max(var(--space-5), env(safe-area-inset-right));
+  }
+}
+
+/* Button base */
+.btn {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 12px 24px;
+  border-radius: 0;
+  cursor: pointer;
+  transition: box-shadow 150ms ease, transform 150ms ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-primary {
+  background: var(--color-accent);
+  color: var(--color-black);
+  border: 2px solid var(--color-black);
+  box-shadow: var(--shadow-sm);
+}
+.btn-primary:hover {
+  box-shadow: 2px 2px 0px var(--color-black);
+  transform: translate(2px, 2px);
+}
+.btn-primary:active {
+  box-shadow: 0px 0px 0px var(--color-black);
+  transform: translate(4px, 4px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-black);
+  border: 2px solid var(--color-black);
+  box-shadow: var(--shadow-sm);
+}
+.btn-secondary:hover {
+  background: var(--color-black);
+  color: var(--color-white);
+  box-shadow: 2px 2px 0px var(--color-black);
+  transform: translate(2px, 2px);
+}
+
+.btn-dark {
+  background: var(--color-black);
+  color: var(--color-white);
+  border: 2px solid var(--color-white);
+  box-shadow: 4px 4px 0px var(--color-white);
+}
+
+/* Card base */
+.card {
+  background: var(--color-white);
+  border: var(--border-md);
+  box-shadow: var(--shadow-md);
+  border-radius: 0;
+  overflow: hidden;
+}
+
+/* Animations */
+@keyframes bounce-subtle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* AOS overrides for neobrutalism feel */
+[data-aos] {
+  transition-duration: 400ms;
+  transition-timing-function: ease-out;
+}
